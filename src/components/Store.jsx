@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import Filter from "./Filter";
 
 const Store = () => {
   const [info, setInfo] = useState([]);
@@ -16,7 +17,6 @@ const Store = () => {
     const res = await fetch("https://fakestoreapi.com/products/");
     const data = await res.json();
     setInfo(data);
-    console.log(info);
   };
 
   /*   
@@ -31,13 +31,21 @@ const filteredM = info.filter(
       <Card.Img
         variant="top"
         src={item.image}
-        style={{ width: "15rem", height: "13rem", objectFit: "contain" }}
+        style={{
+          margin: "auto",
+          width: "15rem",
+          height: "13rem",
+          objectFit: "contain",
+        }}
       />
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
         <Card.Text>{item.description}</Card.Text>
         <Badge bg="light" text="dark">
-          {item.price}
+          ${item.price}
+        </Badge>
+        <Badge bg="light" text="dark">
+          {item.rating.count} unidades disponibles
         </Badge>
         <Button variant="primary">
           <AiOutlineShoppingCart />
@@ -48,6 +56,8 @@ const filteredM = info.filter(
   return (
     <>
       <Header />
+      <Filter />
+      <main>{itemsM}</main>
       <Footer />
     </>
   );
