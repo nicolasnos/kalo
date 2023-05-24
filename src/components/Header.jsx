@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Badge from "react-bootstrap/Badge";
-import logo from "../assets/images/Nlogo.png";
+import logo from "../assets/Nlogo.png";
 
 function Header() {
   return (

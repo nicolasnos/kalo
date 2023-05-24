@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
-import SHeader from "../components/SHeader";
+import { Link, Route, BrowserRouter, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Store from "./components/Store";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const Start = () => {
-  const [uEmail, setUEmail] = useState < string > "";
-  const [uName, setUName] = useState < string > "";
-  const [activate, setActivate] = useState < boolean > true;
-  const [redirectSt, setRedirectS] = useState < boolean > false;
+  const [uEmail, setUEmail] = useState("");
+  const [uName, setUName] = useState("");
+  const [activate, setActivate] = useState("");
+  const [redirectSt, setRedirectS] = useState("");
 
   const activateB = () => {
     uEmail.length >= 8 && uName.length >= 3
@@ -21,7 +22,7 @@ const Start = () => {
   }, [uEmail, uName]);
 
   if (redirectSt) {
-    return <SHeader />;
+    return <Store />;
   }
   return (
     <div>
@@ -62,6 +63,9 @@ const Start = () => {
         disabled={activate}
       >
         Entrar
+      </Button>
+      <Button className="m-3" variant="dark" size="lg">
+        Registrarse
       </Button>
     </div>
   );
