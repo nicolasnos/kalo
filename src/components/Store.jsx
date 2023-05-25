@@ -19,13 +19,6 @@ const Store = () => {
     setInfo(data);
   };
 
-  /*   
-    FILTRO QUE PUEDE SERVIR LUEGO
-const filteredM = info.filter(
-    (item) => item.category.includes("men") && !item.category.includes("women")
-  );
-  console.log(filteredM); */
-
   const itemsM = info.map((item, i) => (
     <Card style={{ width: "18rem", margin: "1.5rem" }} key={i}>
       <Card.Img
@@ -40,6 +33,7 @@ const filteredM = info.filter(
       />
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
+        <Card.Text>{item.category}</Card.Text>
         <Card.Text>{item.description}</Card.Text>
         <Badge bg="light" text="dark">
           ${item.price}
@@ -56,7 +50,7 @@ const filteredM = info.filter(
   return (
     <>
       <Header />
-      <Filter />
+      <Filter lista={info} acLista={setInfo} />
       <main>{itemsM}</main>
       <Footer />
     </>
